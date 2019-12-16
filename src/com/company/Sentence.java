@@ -51,8 +51,27 @@ public class Sentence {
      */
     public void replaceNthTime(String str, int n, String repl) {
         int w = findNthTime(str, n);
+        String l="";
+        if (w!=-1) {
+            l+=currSent.substring(0, w);
+            l+=repl;
+            l+=currSent.substring(w+str.length(), currSent.length());
+            currSent = l;
+
+        }
+
+
 
     }
+    /*
+    output for replaceNthTime:
+    A crane ate late.
+    A cat ate late.
+    A cat ate lxxe.
+    A cat ate late.
+    xxaa
+    abbba
+     */
 
     /** Returns the index of the last occurrence of str in the current sentence:
      * returns -1 if str is not found.
