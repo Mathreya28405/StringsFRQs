@@ -13,9 +13,10 @@ public class ErrorLog {
     /** Returns true if the description in this error log entry
      * contains keyword; false otherwise.
      */
-    public boolean containsKey(String keyword) {
+   // public boolean containsKey(String keyword) {
         /* part b */
-    }
+  //  }
+
 
     public String getMachineId() { return machineId;}
     public String getDescription() { return description; }
@@ -28,14 +29,14 @@ public class ErrorLog {
         ErrorLog er5 = new ErrorLog("SERVER22:write error on disk");
         ErrorLog er6 = new ErrorLog("Webserver:error on /dev/disk");
 
-        System.out.println("message 1 " + er1.containsKey("disk"));
+       /* System.out.println("message 1 " + er1.containsKey("disk"));
         System.out.println("message 2 " + er2.containsKey("disk"));
         System.out.println("message 3 " + er3.containsKey("disk"));
         System.out.println("message 4 " + er4.containsKey("disk"));
         System.out.println("message 5 " + er5.containsKey("disk"));
         System.out.println("message 6 " + er6.containsKey("disk"));
 
-
+*/
     }
 
 }
