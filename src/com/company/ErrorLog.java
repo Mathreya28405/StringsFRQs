@@ -7,21 +7,41 @@ public class ErrorLog {
 
     /** Precondition: message is a valid Error log entry */
     public ErrorLog(String message) {
-        /* part a */
+        int x = message.indexOf(':');
+        machineId = message.substring(0, x);
+        description = message.substring(x+1, message.length());
+
     }
 
     /** Returns true if the description in this error log entry
      * contains keyword; false otherwise.
      */
-   // public boolean containsKey(String keyword) {
-        /* part b */
-  //  }
+    public boolean containsKey(String keyword) {
+        int k = description.indexOf(keyword);
+        if (k==0) {
+            if (description.equals(keyword) || description.charAt(keyword.length()) == ' ') {
+                return true;
+            }
+        }
+        else if (k==description.length()-keyword.length()) {
+            if (description.charAt(k-1) == ' ') {
+                return true;
+            }
+        }
+        else if (k!= -1){
+            if (description.charAt(k-1) == ' ' && description.charAt(k + keyword.length()) == ' ') {
+                return true;
+            }
+        }
+        return false;
+    }
 
 
     public String getMachineId() { return machineId;}
     public String getDescription() { return description; }
 
     public static void main(String[] args) {
+
         ErrorLog er1 = new ErrorLog("CLIENT2:security alert");
         ErrorLog er2 = new ErrorLog("Webserver:disk offline");
         ErrorLog er3 = new ErrorLog("SERVER22:file not found on disk3");
@@ -29,14 +49,24 @@ public class ErrorLog {
         ErrorLog er5 = new ErrorLog("SERVER22:write error on disk");
         ErrorLog er6 = new ErrorLog("Webserver:error on /dev/disk");
 
-       /* System.out.println("message 1 " + er1.containsKey("disk"));
+        System.out.println("message 1 " + er1.containsKey("disk"));
         System.out.println("message 2 " + er2.containsKey("disk"));
         System.out.println("message 3 " + er3.containsKey("disk"));
         System.out.println("message 4 " + er4.containsKey("disk"));
         System.out.println("message 5 " + er5.containsKey("disk"));
         System.out.println("message 6 " + er6.containsKey("disk"));
 
-*/
+
     }
+    /*
+    Output for ErrorLog:
+    message 1 false
+    message 2 true
+    message 3 false
+    message 4 true
+    message 5 true
+    message 6 false
+     */
+
 
 }
